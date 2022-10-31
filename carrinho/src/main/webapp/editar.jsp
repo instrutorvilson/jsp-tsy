@@ -15,7 +15,7 @@
 <body>
     <%
         String idproduto = request.getParameter("id");
-        Produto p = DaoProduto.consultar(Integer.parseInt(idproduto));
+        Produto p = DaoProduto.consultar(Integer.parseInt(idproduto));       
     %>
     <div class="container">
         <form action="editar.jsp" method="POST">
@@ -55,7 +55,7 @@
              <select
                 id="unidademedida"
                 name="unidademedida"
-                class="form-select"              
+                class="form-select"                              
              >
                 <option value="LT">Litros</option>
                 <option value="KG">Kilos</option>
@@ -66,6 +66,7 @@
     </div>
    
     <%
+       out.write("<script>document.getElementById('unidademedida').value ='"+p.getUnidadeMedida()+"'</script>");
        if(request.getMethod() == "POST"){
         String descricao = request.getParameter("descricao");
         String preco = request.getParameter("preco");

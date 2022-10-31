@@ -102,4 +102,18 @@ public class DaoProduto {
        }
        return "erro de conexão";
     }
+
+    public static  void excluir(int id){
+        Connection con = Conexao.conectar();
+        if(con != null){
+            String sql = "delete from produto where id = ?";
+            try {
+                PreparedStatement stm = con.prepareStatement(sql);
+                stm.setInt(1,id);
+                stm.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 }

@@ -1,5 +1,8 @@
 package com.carrinho.entidades;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+
 public class Produto {
     private int id;
     private String descricao;
@@ -18,6 +21,13 @@ public class Produto {
 
     public Produto(int id, String descricao, float preco, float estoque, String unidadeMedida) {
         this.id = id;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.estoque = estoque;
+        this.unidadeMedida = unidadeMedida;
+    }
+
+    public Produto(String descricao, float preco, float estoque, String unidadeMedida) {
         this.descricao = descricao;
         this.preco = preco;
         this.estoque = estoque;

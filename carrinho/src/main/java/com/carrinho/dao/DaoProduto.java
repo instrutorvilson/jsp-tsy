@@ -16,12 +16,14 @@ public class DaoProduto {
     public static String salvar(Produto prod){
         Connection con = Conexao.conectar();
         if(con != null){
-            String sql = "insert into produto(descricao,preco)" +
-                    "values(?,?)";
+            String sql = "insert into produto(descricao,preco, estoque, unidademedida)" +
+                    "values(?,?,?,?)";
             try {
                 PreparedStatement stm = con.prepareStatement(sql);
                 stm.setString(1,prod.getDescricao());
                 stm.setFloat(2,prod.getPreco());
+                stm.setFloat(3,prod.getEstoque());
+                stm.setString(4,prod.getUnidadeMedida());
 
                 stm.execute();
 

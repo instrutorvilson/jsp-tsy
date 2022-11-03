@@ -13,32 +13,38 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </head>
 <body>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Descrição</th>
-                <th>Preço</th>
-                <th>Estoque</th>
-                <th>Unidades</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <%
-               List<Produto> lista = DaoProduto.consultar();
-               for(Produto prod : lista){
-                  out.write("<tr>");
-                  out.write("<td>"+prod.getId()+"</td>");
-                  out.write("<td>"+prod.getDescricao()+"</td>"); 
-                  out.write("<td>"+prod.getPreco()+"</td>");
-                  out.write("<td>"+prod.getEstoque()+"</td>");
-                  out.write("<td>"+prod.getUnidadeMedida()+"</td>");
-                  out.write("<td><a class='me-2' href='editar.jsp?id="+prod.getId()+"'>Editar</a><a href='excluir.jsp?id="+prod.getId()+"'>Excluir</a></td>");
-                  out.write("</tr>");
-               }
-            %>
-        </tbody>
-    </table>
+    <div class="container">
+        <h1 class="text-center"> Lista de produtos</h1>
+        <hr />
+        <table class="table table-stripped">
+            <thead class="bg-success">
+                <tr>
+                    <th>Id</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                    <th>Estoque</th>
+                    <th>Unidades</th>
+                    <th>Ações</th>
+                    <th>Carrinho</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%
+                   List<Produto> lista = DaoProduto.consultar();
+                   for(Produto prod : lista){
+                      out.write("<tr>");
+                      out.write("<td>"+prod.getId()+"</td>");
+                      out.write("<td>"+prod.getDescricao()+"</td>"); 
+                      out.write("<td>"+prod.getPreco()+"</td>");
+                      out.write("<td>"+prod.getEstoque()+"</td>");
+                      out.write("<td>"+prod.getUnidadeMedida()+"</td>");
+                      out.write("<td><a class='me-2' href='editar.jsp?id="+prod.getId()+"'>Editar</a><a href='excluir.jsp?id="+prod.getId()+"'>Excluir</a></td>");
+                      out.write("<td><a class='me-2' href='addcarrinho.jsp?id="+prod.getId()+"'>Add</a></td>");
+                      out.write("</tr>");
+                   }
+                %>
+            </tbody>
+        </table>
+    </div>    
 </body>
 </html>
